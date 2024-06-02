@@ -13,7 +13,7 @@ public partial class Product
 
     public string ProductCategory { get; set; } = null!;
 
-    public byte[] ProductPhoto { get; set; } = null!;
+    public byte[]? ProductPhoto { get; set; }
 
     public string ProductManufacturer { get; set; } = null!;
 
@@ -23,7 +23,7 @@ public partial class Product
 
     public int ProductQuantityInStock { get; set; }
 
-    public string ProductStatus { get; set; } = null!;
+    public sbyte ProductStatus { get; set; }
 
     public virtual ICollection<Orderproduct> Orderproducts { get; set; } = new List<Orderproduct>();
 }

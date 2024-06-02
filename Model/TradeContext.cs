@@ -99,8 +99,7 @@ public partial class TradeContext : DbContext
             entity.Property(e => e.ProductDescription).HasColumnType("text");
             entity.Property(e => e.ProductManufacturer).HasColumnType("text");
             entity.Property(e => e.ProductName).HasColumnType("text");
-            entity.Property(e => e.ProductPhoto).HasColumnType("blob");
-            entity.Property(e => e.ProductStatus).HasColumnType("text");
+            entity.Property(e => e.ProductStatus).HasDefaultValueSql("'1'");
         });
 
         modelBuilder.Entity<Role>(entity =>
