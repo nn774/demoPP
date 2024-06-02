@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:demoPP"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="PcolorFirst">#FFFFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="PcolorSecond">#CCFFCC</SolidColorBrush>
+        <SolidColorBrush x:Key="PcolorThird">#66FF66</SolidColorBrush>
     </Application.Resources>
 </Application>
