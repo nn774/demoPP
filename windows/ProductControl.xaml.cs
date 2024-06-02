@@ -1,4 +1,5 @@
-﻿using System;
+﻿using demoPP.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace demoPP.windows
         public ProductControl()
         {
             InitializeComponent();
+        }
+
+        public ProductControl(Product product) : this()
+        {
+            DataContext = product;
         }
     }
 }

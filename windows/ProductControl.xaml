@@ -5,8 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:demoPP.windows"
              mc:Ignorable="d" 
-             d:Height="250" d:Width="1000">
+             Height="200" d:Width="800">
+    <UserControl.Resources>
+        <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
+    </UserControl.Resources>
     <Grid Background="{StaticResource PcolorSecond}">
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Margin="10" BorderBrush="Gray" BorderThickness="1">
+            <Image Source="{Binding ProductPhoto, Converter={StaticResource ByteArrayToImageConverter}}" Stretch="Uniform" />
+        </Border>
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="{Binding ProductName}" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,5"/>
+            <TextBlock Text="{Binding ProductDescription}" FontSize="14" Foreground="DarkGray" TextWrapping="Wrap" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold" Text="Категория:"/>
+                <TextBlock Text="{Binding ProductCategory}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold" Text="Производитель:"/>
+                <TextBlock Text="{Binding ProductManufacturer}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold"><Run Language="ru-ru" Text="Цена"/><Run Text=": "/></TextBlock>
+                <TextBlock Text="{Binding ProductCost}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold"><Run Language="ru-ru" Text="Скидка"/><Run Text=": "/></TextBlock>
+                <TextBlock Text="{Binding ProductDiscountAmount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold"><Run Language="ru-ru" Text="Остаток"/><Run Text=": "/></TextBlock>
+                <TextBlock Text="{Binding ProductQuantityInStock}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock FontWeight="Bold"><Run Language="ru-ru" Text="Статус"/><Run Text=": "/></TextBlock>
+                <TextBlock Text="{Binding ProductStatus}"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -1,12 +1,57 @@
-﻿<Window x:Class="demoPP.windows.MainControlWIndow"
+﻿<Window x:Class="demoPP.windows.MainControlWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoPP.windows"
         mc:Ignorable="d"
-        Title="MainControlWIndow" Height="450" Width="800">
+        Title="MainControlWindow" Height="600" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="10">
+            <TextBox x:Name="SearchTextBox" Width="200" Margin="0,0,10,0"/>
+            <ComboBox x:Name="CategoryComboBox" Width="150" Margin="0,0,10,0" SelectionChanged="OnFilterChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox x:Name="ManufacturerComboBox" Width="150" Margin="0,0,10,0" SelectionChanged="OnFilterChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Искать" Width="75" Click="OnSearchButtonClick"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1" Name="AdminPanel">
+            <Button Content="Добавить" Width="100" Margin="0,0,10,0" Click="OnAddProductClick"/>
+            <Button Content="Изменить" Width="100" Margin="0,0,10,0" Click="OnEditProductClick"/>
+            <Button Content="Удалить" Width="100" Margin="0,0,10,0" Click="OnDeleteProductClick"/>
+        </StackPanel>
+        <ListView Name="ProductsListView" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:ProductControl />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
