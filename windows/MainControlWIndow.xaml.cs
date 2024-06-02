@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,29 +11,47 @@ namespace demoPP.windows
     {
         private TradeContext tradeContext = new TradeContext();
         private List<Product> allProducts;
+        private int currentPage = 1;
+        private int itemsPerPage = 10;
+        private int totalPages;
+        private List<Product> originalProducts;
 
         public MainControlWindow()
         {
             InitializeComponent();
-            LoadProducts();
+            allProducts = tradeContext.Products.ToList();
+            originalProducts = allProducts.ToList();
             LoadFilters();
+            LoadProducts();
             CheckAdminPermissions();
         }
 
         private void LoadProducts()
         {
             allProducts = tradeContext.Products.ToList();
-            ProductsListView.ItemsSource = allProducts;
+            totalPages = (int)Math.Ceiling((double)allProducts.Count / itemsPerPage);
+            DisplayCurrentPage();
+        }
+
+        private void DisplayCurrentPage()
+        {
+            var productsToDisplay = allProducts
+                .Skip((currentPage - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToList();
+
+            ProductsListView.ItemsSource = productsToDisplay;
+            PageInfoTextBlock.Text = $"Page {currentPage} of {totalPages}";
         }
 
         private void LoadFilters()
         {
-            var categories = allProducts.Select(p => p.ProductCategory).Distinct().ToList();
+            var categories = originalProducts.Select(p => p.ProductCategory).Distinct().ToList();
             categories.Insert(0, "Категория");
             CategoryComboBox.ItemsSource = categories;
             CategoryComboBox.SelectedIndex = 0;
 
-            var manufacturers = allProducts.Select(p => p.ProductManufacturer).Distinct().ToList();
+            var manufacturers = originalProducts.Select(p => p.ProductManufacturer).Distinct().ToList();
             manufacturers.Insert(0, "Производитель");
             ManufacturerComboBox.ItemsSource = manufacturers;
             ManufacturerComboBox.SelectedIndex = 0;
@@ -62,7 +81,7 @@ namespace demoPP.windows
             string selectedCategory = CategoryComboBox.SelectedItem as string;
             string selectedManufacturer = ManufacturerComboBox.SelectedItem as string;
 
-            var filteredProducts = allProducts.Where(p =>
+            var filteredProducts = originalProducts.Where(p =>
                 (string.IsNullOrEmpty(searchText) ||
                  p.ProductName.ToLower().Contains(searchText) ||
                  p.ProductDescription.ToLower().Contains(searchText) ||
@@ -71,7 +90,10 @@ namespace demoPP.windows
                 (selectedCategory == "Категория" || p.ProductCategory == selectedCategory) &&
                 (selectedManufacturer == "Производитель" || p.ProductManufacturer == selectedManufacturer)).ToList();
 
-            ProductsListView.ItemsSource = filteredProducts;
+            allProducts = filteredProducts;
+            totalPages = (int)Math.Ceiling((double)allProducts.Count / itemsPerPage);
+            currentPage = 1;
+            DisplayCurrentPage();
         }
 
         private void OnAddProductClick(object sender, RoutedEventArgs e)
@@ -124,8 +146,6 @@ namespace demoPP.windows
             }
         }
 
-
-
         private void OnDeleteProductClick(object sender, RoutedEventArgs e)
         {
             if (ProductsListView.SelectedItem is Product selectedProduct)
@@ -137,6 +157,24 @@ namespace demoPP.windows
             else
             {
                 MessageBox.Show("Please select a product to delete.");
+            }
+        }
+
+        private void OnPreviousPageClick(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayCurrentPage();
+            }
+        }
+
+        private void OnNextPageClick(object sender, RoutedEventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                DisplayCurrentPage();
             }
         }
     }

@@ -11,6 +11,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="10">
             <TextBox x:Name="SearchTextBox" Width="200" Margin="0,0,10,0"/>
@@ -53,5 +54,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,10" Grid.Row="3">
+            <Button Content="Previous" Click="OnPreviousPageClick" />
+            <TextBlock Name="PageInfoTextBlock" Margin="10,0" VerticalAlignment="Center"/>
+            <Button Content="Next" Click="OnNextPageClick" />
+        </StackPanel>
     </Grid>
 </Window>
