@@ -55,9 +55,9 @@
             </ListView.ItemTemplate>
         </ListView>
          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,10" Grid.Row="3">
-            <Button Content="Previous" Click="OnPreviousPageClick" />
+            <Button Content="Пред" Click="OnPreviousPageClick" />
             <TextBlock Name="PageInfoTextBlock" Margin="10,0" VerticalAlignment="Center"/>
-            <Button Content="Next" Click="OnNextPageClick" />
+            <Button Content="След" Click="OnNextPageClick" />
         </StackPanel>
     </Grid>
 </Window>

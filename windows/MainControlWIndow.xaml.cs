@@ -41,7 +41,7 @@ namespace demoPP.windows
                 .ToList();
 
             ProductsListView.ItemsSource = productsToDisplay;
-            PageInfoTextBlock.Text = $"Page {currentPage} of {totalPages}";
+            PageInfoTextBlock.Text = $"Страница {currentPage} из {totalPages}";
         }
 
         private void LoadFilters()

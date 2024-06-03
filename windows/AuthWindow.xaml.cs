@@ -32,9 +32,6 @@ namespace demoPP.windows
         private void btnenter_Click(object sender, RoutedEventArgs e)
         {
             Login(txtlogin.Text, txtpass.Text, users);
-            MainControlWindow mainControlWIndow = new MainControlWindow();
-            mainControlWIndow.Show();
-            Close();
         }
 
         private void btnreg_Click(object sender, RoutedEventArgs e)
@@ -54,6 +51,9 @@ namespace demoPP.windows
             MessageBox.Show("Добро пожаловать " + user.UserName);
             Authorization.User = user;
             Authorization.Role = role;
+            MainControlWindow mainControlWIndow = new MainControlWindow();
+            mainControlWIndow.Show();
+            Close();
         }
     }
 }
