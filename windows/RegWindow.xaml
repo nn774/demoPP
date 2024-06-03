@@ -25,130 +25,26 @@
             <ColumnDefinition Width="310"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Регистрация" FontSize="24" FontWeight="Bold" 
-                   VerticalAlignment="Bottom" HorizontalAlignment="Center"  Margin="0,20,0,0"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Регистрация" FontSize="24" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Margin="0,20,0,0"/>
 
-        <Button Grid.Column="2" Grid.Row="0" Content="Назад" Width="70" HorizontalAlignment="Right" Margin="10" x:Name="btnleave" Click="btnleave_Click" VerticalAlignment="Top"></Button>
-        <TextBox x:Name="txtlogin" 
-                 Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300"   Padding="10" FontSize="16" Grid.Row="1">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Grid>
-                                    <TextBox x:Name="InputTextBox" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                                    <TextBlock x:Name="WatermarkTextBlock" Text="Логин" Foreground="Gray" Padding="10" FontSize="16" IsHitTestVisible="False" Visibility="Collapsed" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="Text" Value="">
-                                        <Setter TargetName="WatermarkTextBlock" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox x:Name="txtsurname" 
-         Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300"   Padding="10" FontSize="16" Grid.Row="3">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Grid>
-                                    <TextBox x:Name="InputTextBox" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                                    <TextBlock x:Name="WatermarkTextBlock" Text="Фамилия" Foreground="Gray" Padding="10" FontSize="16" IsHitTestVisible="False" Visibility="Collapsed" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="Text" Value="">
-                                        <Setter TargetName="WatermarkTextBlock" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox x:Name="txtname" 
-  Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300"   Padding="10" FontSize="16" Grid.Row="4">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Grid>
-                                    <TextBox x:Name="InputTextBox" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                                    <TextBlock x:Name="WatermarkTextBlock" Text="Имя" Foreground="Gray" Padding="10" FontSize="16" IsHitTestVisible="False" Visibility="Collapsed" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="Text" Value="">
-                                        <Setter TargetName="WatermarkTextBlock" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox x:Name="txtPatronymic" 
-Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300"   Padding="10" FontSize="16" Grid.Row="5">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Grid>
-                                    <TextBox x:Name="InputTextBox" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                                    <TextBlock x:Name="WatermarkTextBlock" Text="Отчество" Foreground="Gray" Padding="10" FontSize="16" IsHitTestVisible="False" Visibility="Collapsed" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="Text" Value="">
-                                        <Setter TargetName="WatermarkTextBlock" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox Name="txtpass"   Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="300"   Padding="10" FontSize="16" Grid.Row="2" >
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Grid>
-                                    <TextBox x:Name="InputTextBox" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-                                    <TextBlock x:Name="WatermarkTextBlock" Text="Пароль" Foreground="Gray" Padding="10" FontSize="16" IsHitTestVisible="False" Visibility="Collapsed" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="Text" Value="">
-                                        <Setter TargetName="WatermarkTextBlock" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
+        <Button Grid.Column="2" Grid.Row="0" Content="Назад" Width="70" HorizontalAlignment="Right" Margin="5" x:Name="btnleave" Click="btnleave_Click" VerticalAlignment="Top"/>
+        
+        <Label Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" FontSize="16" Grid.Row="1" Content="Логин"/>
+        <TextBox x:Name="txtlogin" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300" Padding="0" FontSize="16" Grid.Row="1"/>
+        
+        <Label Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" FontSize="16" Grid.Row="2" Content="Фамилия"/>
+        <TextBox x:Name="txtsurname" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300" Padding="0" FontSize="16" Grid.Row="2"/>
 
+        <Label Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" FontSize="16" Grid.Row="3" Content="Имя"/>
+        <TextBox x:Name="txtname" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300" Padding="0" FontSize="16" Grid.Row="3"/>
 
+        <Label Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" FontSize="16" Grid.Row="4" Content="Отчество"/>
+        <TextBox x:Name="txtPatronymic" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300" Padding="0" FontSize="16" Grid.Row="4"/>
 
-        <Button x:Name="btnenter" Grid.Column="1" Grid.Row="7" Content="Подтвердить" Width="100" Height="30" 
-                HorizontalAlignment="Center" VerticalAlignment="Top" 
-                 Click="btnenter_Click"/>
+        <Label Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" FontSize="16" Grid.Row="5" Content="Пароль"/>
+        <TextBox Name="txtpass" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="300" Padding="0" FontSize="16" Grid.Row="5"/>
 
-
-
-
-
+        <Button x:Name="btnenter" Grid.Column="1" Grid.Row="7" Content="Подтвердить" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnenter_Click"/>
 
     </Grid>
     <Window.Resources>
